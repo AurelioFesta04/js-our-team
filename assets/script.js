@@ -56,16 +56,20 @@ const memberForm = document.getElementById("member-form");
 const createCard = (member) => {
   const { name, role, email, img } = member;
   return `
-      <div class="team-card">
-        <div class="card-image">
-          <img src="./${img}" alt="${name}" />
-        </div>
-        <div class="card-text">
-          <h3><strong>${name}</strong></h3>
-          <h5>${role}</h5>
-          <h5>${email}</h5>
-        </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 bg-black card mb-2" style="max-width:30%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="./${img}" class="img-fluid rounded-start" style="width: 100%;" alt="${name}">
+    </div>
+    <div class="col-8">
+      <div class="card-text p-2">
+      <h3><strong>${name}</strong></h3>
+        <h5>${role}</h5>
+        <h6>${email}</h6>
       </div>
+    </div>
+  </div>
+</div>
      `;
 };
 
@@ -100,7 +104,7 @@ const handleSubmit = (event) => {
     name,
     role,
     email,
-    img: image 
+    img
   };
 
   teamMembers.push(newMember);

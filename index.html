@@ -11,27 +11,27 @@
 </head>
 
 <body>
-    <div>
-        <h1><strong>Incontra il tuo Team</strong></h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, maiores voluptate. Vitae inventore est
+    <div class="text-center p-5">
+        <h1><strong style="color: blueviolet;">Incontra il tuo Team</strong></h1>
+        <p style="color: black;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, maiores voluptate. Vitae inventore est
             perferendis sint quia nesciunt vero doloribus, voluptates ipsum quam deleniti quis, beatae quo aliquam.
             Consequuntur, distinctio.</p>
     </div>
-    <div id="team-container">
+    <div id="team-container" class="d-flex justify-content-around row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-2">
     </div>
-    <section class="form-container">
+    <section class="form-container mx-auto px-5">
         <h2>Aggiungi un nuovo membro</h2>
         <form id="member-form">
             <div>
-                <input type="text" id="name" placeholder="Nome e Cognome" required autocomplete="off">
+                <input class="form-control" style="width: 40%;" type="text" id="name" placeholder="Nome e Cognome" required autocomplete="off">
             </div>
             <div>
-                <input type="text" id="role" placeholder="Ruolo" required autocomplete="off">
+                <input class="form-control" style="width: 40%;" type="text" id="role" placeholder="Ruolo" required autocomplete="off">
             </div>
             <div>
-                <input type="text" id="image" placeholder="url foto profilo" required autocomplete="off">
+                <input class="form-control" style="width: 40%;" type="text" id="image" placeholder="url foto profilo" required autocomplete="off">
             </div>
-            <button type="submit">Aggiungi membro</button>
+            <button type="submit" class="btn btn-success">Aggiungi membro</button>
         </form>
     </section>
     <script src="assets/script.js"></script>
