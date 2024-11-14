@@ -1,13 +1,3 @@
-// Dato un array di oggetti rappresentante un team di un’azienda, 
-// creare una pagina dedicata  in cui mostrare una card per ciascun componente.
-// (trovate l’array del team all’interno della cartella in allegato)
-
-// **Bonus**
-// - Rendere l’esercizio responsive, mandando a capo le card
-// - Aggiungere un form di aggiunta membri che permetta di visualizzare 
-// il nuovo membro sulla pagina (usate una foto qualunque, anche vostra se 
-// volete sentirvi parte del team! :sorridere:)
-
 const teamMembers = [
   {
     name: "Marco Bianchi",
@@ -52,42 +42,40 @@ const teamContainerElem = document.querySelector("#team-container");
 const [nameInput, roleInput, emailInput, imageInput] = inputs;
 const memberForm = document.getElementById("member-form");
 
-
+// Funzione per creare una card per ogni membro del team
 const createCard = (member) => {
   const { name, role, email, img } = member;
   return `
-      <div class="col-sm-12 col-md-6 col-lg-4 bg-black card mb-2" style="max-width:30%;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="./${img}" class="img-fluid rounded-start" style="width: 100%;" alt="${name}">
-    </div>
-    <div class="col-8">
-      <div class="card-text p-2">
-      <h3><strong>${name}</strong></h3>
-        <h5>${role}</h5>
-        <h6>${email}</h6>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="card bg-dark text-white">
+        <div class="row g-0">
+          <div class="col-4">
+            <img src="${img}" class="img-fluid rounded-start" alt="${name}">
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <h5>${name}</h5>
+              <p>${role}</p>
+              <p class="email">${email}</small></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-     `;
+  `;
 };
 
-
-const cardPerTutti = () => {
-
+// Funzione per aggiornare la visualizzazione del team
+const renderTeam = () => {
   let items = "";
-
-  for (let i = 0; i < teamMembers.length; i++) {
-    const card = createCard(teamMembers[i]);
-    items += card;
-  }
+  teamMembers.forEach(member => {
+    items += createCard(member);
+  });
   teamContainerElem.innerHTML = items;
 };
 
-
+// Funzione per gestire l'invio del form e aggiungere un nuovo membro
 const handleSubmit = (event) => {
-
   event.preventDefault();
 
   const name = nameInput.value.trim();
@@ -104,17 +92,17 @@ const handleSubmit = (event) => {
     name,
     role,
     email,
-    img
+    img: image // usa l'URL immagine inserito dall'utente
   };
 
-  teamMembers.push(newMember);
-  console.log(teamMembers);
+  teamMembers.push(newMember); // Aggiungi il nuovo membro all'array
+  renderTeam(); // Rende visibile il nuovo team
 
-  cardPerTutti();
-
-  memberForm.reset();
+  memberForm.reset(); // Reset del form
 };
 
-cardPerTutti();
+// Inizializza la visualizzazione del team
+renderTeam();
 
+// Aggiungi l'evento al form
 memberForm.addEventListener("submit", handleSubmit);

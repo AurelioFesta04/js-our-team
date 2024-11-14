@@ -5,3 +5,11 @@
 h6 {
     color: skyblue;
 }
+
+.email {
+    font-size: 0.75rem;
+}
+
+.card-body {
+    line-height: 0.75rem;
+}
